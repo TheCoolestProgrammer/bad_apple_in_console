@@ -53,9 +53,11 @@ if __name__ == '__main__':
             # print()
             x_string+="\n"
             y+=downgrade_value_y
+        # x_string+="\n"*(terminal_lines//8)
         print(x_string)
+        # print("\n"*terminal_lines)
 
         # print("_________________")
         # time.sleep(1/(20))
-        os.system("cls")
+        # os.system("cls")
         count+=1
