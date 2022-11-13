@@ -1,3 +1,4 @@
+import shutil
 import time
 from datetime import timedelta
 import cv2
@@ -10,18 +11,21 @@ import os
 if __name__ == '__main__':
     cap = cv2.VideoCapture("bad_apple.mp4")
     fps = cap.get(cv2.CAP_PROP_FPS)
-    # width = cap.get(3)
-    # height = cap.get(3)
+    video_width = cap.get(3)
+    video_height = cap.get(3)
     # cap.open(360)
     # print(width,height)
-
-    downgrade_value_x= 4
-    downgrade_value_y=6
+    terminal_columns,terminal_lines=shutil.get_terminal_size()
+    downgrade_value_x= int(video_width//terminal_columns)+1
+    downgrade_value_y=int(video_width//terminal_lines)
     # cap.set(cv2.CAP_PROP_POS_MSEC,(36000))
     # x,image = cap.read()
     # cv2.imwrite("frame.jpg", image)
     count=0
     while True:
+        terminal_columns, terminal_lines = shutil.get_terminal_size()
+        downgrade_value_x = int(video_width // terminal_columns) + 1
+        downgrade_value_y = int(video_width // terminal_lines)
         is_image, image = cap.read()
         if not is_image:
 
